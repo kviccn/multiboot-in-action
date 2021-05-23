@@ -1,0 +1,18 @@
+#define MULTIBOOT_HEADER_MAGIC      0x1BADB002
+#define MULTIBOOT_HEADER_FLAGS      0
+#define MULTIBOOT_HEADER_CHECKSUM   -(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS)
+
+.section .text
+.globl entry
+.long MULTIBOOT_HEADER_MAGIC
+.long MULTIBOOT_HEADER_FLAGS
+.long MULTIBOOT_HEADER_CHECKSUM
+
+entry:
+movb $'H', 0xb8000
+movb $'e', 0xb8002
+movb $'l', 0xb8004
+movb $'l', 0xb8006
+movb $'o', 0xb8008
+
+hlt
